@@ -293,6 +293,11 @@ y_new_season = df_imputed_new_season['overall']
 # Using the trained model to make predictions on the new season's data
 y_pred_new_season = model_gs.predict(X_new_season)
 
+# Saving the y_test and y_pred values in a CSV file
+data = {'y_test': y_new_season, 'y_pred': y_pred_new_season}
+new_df = pd.DataFrame(data)
+new_df.to_csv('y_test_and_y_pred.csv', index=False)
+
 # Evaluating the model's performance on the new data
 mse_new_season = mean_squared_error(y_new_season, y_pred_new_season)
 mae_new_season = mean_absolute_error(y_new_season, y_pred_new_season)
